@@ -23,7 +23,7 @@
                 >My Profile</nuxt-link
               >
               <hr class="navbar-divider" />
-              <a class="navbar-item">Logout</a>
+              <a class="navbar-item" @click="logout">Logout</a>
             </div>
           </div>
           <template v-else>
@@ -40,6 +40,13 @@
 import { mapGetters } from 'vuex'
 
 export default {
+  methods: {
+    async logout() {
+      console.log(document.cookie );
+      await this.$auth.logout();
+     document.cookie = "name= Refresh; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    },
+  },
   computed: {
     ...mapGetters(['isAuthenticated', 'loggedInUser'])
   }

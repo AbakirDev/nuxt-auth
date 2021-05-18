@@ -47,8 +47,8 @@ export default {
   ],
   axios: {
     baseURL: 'http://localhost:3002/', //process.env.BASE_URL,
-    //proxyHeaders: false,
-    //credentials: true,
+    proxyHeaders: false,
+    credentials: true,
   },
   server: {
     port: 8010,
@@ -91,54 +91,51 @@ export default {
   //   }
   // },
   auth: {
-    // watchLoggedIn: true,
+    watchLoggedIn: true,
+    localStorage: false,
+    token: false,
+    cookie: false,
 
-    // token: {
-    //   prefix: "token."
-    // },
-    // localStorage: {
-    //   prefix: "aaaaaaa."
-    // },
-
-    // cookie: {
-    //   prefix: 'nuxt.',
-    //   options: {
-    //     path: '/'
-    //   },
-
-    // },
 
     strategies: {
-      local: {
-        // localStorage: false,
-        // cookie: true,
-        //   prefix: "Nuxt",
 
-        // },
-        // token: {
-        //   required: false,
-        //   type: false
-        // },
-        // token: {
-        //   property: 'session',
-        //   maxAge: 60 * 60
-        // },
-        // refreshToken: {
-        //   property: 'Refresh',
-        //   maxAge: 20160 * 60
-        // },
+      local: {
+        localStorage: false,
+        token: false,
+        cookie: false,
         // tokenType: 'Bearer',
 
         endpoints: {
-          login: { url: '/auth/signin', method: 'post', withCredentials: true, propertyName: false },
+          login: { url: '/auth/signin', method: 'post', propertyName: false },
           //, withCredentials: true
           logout: false,
           user: { url: '/auth/me', method: 'get', withCredentials: true, propertyName: false }
           //withCredentials: true,
         },
 
-      }
+      },
+
+      // cookie: {
+      //   // token: {
+      //   //   property: "data.access_token",
+      //   //   required: true,
+      //   //   type: "Bearer",
+      //   // },
+      //   // user: {
+      //   //   property: "data",
+      //   // },
+      //   // endpoints: {
+      //   //   login: {
+      //   //     url: "v1/auth/login",
+      //   //     method: "post",
+      //   //   },
+      //   //   logout: { url: "/v1/auth/logout", method: "delete" },
+      //   //   user: { url: "/v1/settings", method: "get" },
+      //   // },
+      // },
+
     }
+
   },
 
   router: {
